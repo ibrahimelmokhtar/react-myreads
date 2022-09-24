@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Udacity MyReads Project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -6,65 +6,73 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs the project's dependencies to start working with the code.
+
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Available Routes
 
-### `npm test`
+### `Home` Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Displays the available books within the user's app shelves.
 
-### `npm run build`
+### `Search` Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Displays a form that accepts a book title, then shows the available books within the database under the passed title.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `Error 404` Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Handles unwanted urls that the user requests.
 
-### `npm run eject`
+## Backend Server
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[BooksAPI.js](src/apis/BooksAPI.js) file is provided by Udacity within the starter code. It contains the required methods to perform some CRUD operations as listed below:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Get User's Books`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Get user's books that are on app shelves.
+- Method Signature:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  ```JavaScript
+  getAll();
+  ```
 
-## Learn More
+- Arguments: `void`
+- Returns: an array of `book` objects which represents the books currently on the app shelves.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `Update Book Shelf`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Update specific `Book` Object to move it onto other shelf.
+- Method Signature:
 
-### Code Splitting
+  ```JavaScript
+  update(book, shelf);
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Arguments:
 
-### Analyzing the Bundle Size
+  - `book`: `Object` that contains at least an (id) attribute.
+  - `shelf`: `String` The desired shelf title.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Returns: `void`
 
-### Making a Progressive Web App
+### `Search for Specific Books`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Search for specific book title.\
+  **NOTE:** [SEARCH_TERMS.md](./SEARCH_TERMS.md) file contains the available book titles via this limited API.
+- Method Signature:
 
-### Advanced Configuration
+  ```JavaScript
+  search(query);
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Arguments:
 
-### Deployment
+  - `query`: `String` The desired book title to search for
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Returns: an array of `book` objects which represents the available books within the database under the passed title.

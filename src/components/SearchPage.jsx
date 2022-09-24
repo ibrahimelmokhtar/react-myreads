@@ -61,7 +61,7 @@ const SearchPage = () => {
     return (
         <div className="search-books">
             <div className="search-books-bar">
-                <Link to="/" className="close-search" >Close</Link>
+                <Link to="/" title="Back to Home" className="close-search" >Close</Link>
 
                 <div className="search-books-input-wrapper">
                     <input

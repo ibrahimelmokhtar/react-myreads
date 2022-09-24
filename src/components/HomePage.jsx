@@ -31,7 +31,7 @@ const HomePage = () => {
                 <BookShelf title="Read" books={books.filter(book => book.shelf === "read")} />
             </div>
 
-            <Link to="/search" className="open-search">Add a book</Link>
+            <Link to="/search" title="Add new book" className="open-search">Add a book</Link>
         </div>
     );
 };
